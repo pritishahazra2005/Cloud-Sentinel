@@ -1,0 +1,6 @@
+boto3
+google-generativeai
+streamlit
+fastapi
+uvicorn
+python-dotenv
