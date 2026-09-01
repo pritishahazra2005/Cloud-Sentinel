@@ -456,7 +456,7 @@ Potential future enhancements include:
 
 # 📸 Dashboard
 
-> Add a screenshot of your CloudSentinel dashboard here after completing the final UI.
+> CloudSentinel dashboard here after completing the final UI.
 
 <video src="./demo_look/demo.gif" width="500" height= "500" controls></video>
 
