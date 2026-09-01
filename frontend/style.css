@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #e5e7eb;
+    min-height: 100vh;
+}
+
+.topbar {
+    padding: 25px 50px;
+    border-bottom: 1px solid #1f2937;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    font-size: 30px;
+}
+
+.topbar p {
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.status {
+    color: #22c55e;
+}
+
+.dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: #22c55e;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+button.secondary {
+    background: #374151;
+}
+
+.overview {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.score-card,
+.stat,
+.scan-info,
+.finding {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+}
+
+.score-card {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.score-circle {
+    width: 110px;
+    height: 110px;
+    border: 7px solid #2563eb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-circle span {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.score-circle small {
+    margin-top: 18px;
+    color: #94a3b8;
+}
+
+.score-card h2 {
+    margin-bottom: 8px;
+}
+
+.score-card p {
+    color: #94a3b8;
+}
+
+.stat {
+    padding: 25px;
+    text-align: center;
+}
+
+.stat span {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.stat strong {
+    font-size: 30px;
+}
+
+.critical strong {
+    color: #ef4444;
+}
+
+.high strong {
+    color: #f97316;
+}
+
+.medium strong {
+    color: #eab308;
+}
+
+.low strong {
+    color: #22c55e;
+}
+
+.scan-info {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.scan-info p {
+    display: inline-block;
+    margin-right: 40px;
+    color: #94a3b8;
+}
+
+.scan-info strong {
+    color: white;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.findings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.finding {
+    padding: 20px;
+}
+
+.finding-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.finding h3 {
+    margin-bottom: 7px;
+}
+
+.finding p {
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge.CRITICAL {
+    background: #451a1a;
+    color: #f87171;
+}
+
+.badge.HIGH {
+    background: #431407;
+    color: #fb923c;
+}
+
+.badge.MEDIUM {
+    background: #422006;
+    color: #facc15;
+}
+
+.badge.LOW {
+    background: #052e16;
+    color: #4ade80;
+}
+
+.recommendation {
+    margin-top: 15px;
+    padding: 12px;
+    background: #0f172a;
+    border-left: 3px solid #2563eb;
+}
+
+.recommendation strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.empty {
+    padding: 40px;
+    text-align: center;
+    color: #64748b;
+    background: #111827;
+    border-radius: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+
+    .overview {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .score-card {
+        grid-column: span 2;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .topbar {
+        padding: 20px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .overview {
+        grid-template-columns: 1fr;
+    }
+
+    .score-card {
+        grid-column: span 1;
+    }
+
+}
