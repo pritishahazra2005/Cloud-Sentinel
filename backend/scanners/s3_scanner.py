@@ -5,68 +5,82 @@ from botocore.exceptions import ClientError
 def scan_s3():
     findings = []
 
+    s3 = boto3.client("s3")
+
     try:
-        s3 = boto3.client("s3")
-        buckets = s3.list_buckets().get("Buckets", [])
+        response = s3.list_buckets()
 
-        for bucket in buckets:
-            name = bucket["Name"]
+        for bucket in response.get("Buckets", []):
+            bucket_name = bucket["Name"]
 
-            # Check public access block
+            # -------------------------
+            # Public Access Protection
+            # -------------------------
+
             try:
-                public_block = s3.get_public_access_block(
-                    Bucket=name
+                config = s3.get_public_access_block(
+                    Bucket=bucket_name
                 )["PublicAccessBlockConfiguration"]
 
-                all_blocked = all([
-                    public_block.get("BlockPublicAcls", False),
-                    public_block.get("IgnorePublicAcls", False),
-                    public_block.get("BlockPublicPolicy", False),
-                    public_block.get("RestrictPublicBuckets", False)
+                protection_enabled = all([
+                    config.get("BlockPublicAcls", False),
+                    config.get("IgnorePublicAcls", False),
+                    config.get("BlockPublicPolicy", False),
+                    config.get("RestrictPublicBuckets", False)
                 ])
 
-                if not all_blocked:
+                if not protection_enabled:
                     findings.append({
                         "service": "S3",
-                        "resource": name,
+                        "resource": bucket_name,
                         "severity": "CRITICAL",
                         "title": "S3 Public Access Protection Disabled",
                         "description": (
-                            "The bucket does not have all S3 public access "
-                            "protection controls enabled."
+                            "One or more S3 public access protection "
+                            "controls are disabled."
                         )
                     })
 
             except ClientError:
                 findings.append({
                     "service": "S3",
-                    "resource": name,
-                    "severity": "HIGH",
-                    "title": "Unable to Verify S3 Public Access",
+                    "resource": bucket_name,
+                    "severity": "MEDIUM",
+                    "title": "Unable to Check Public Access",
                     "description": (
-                        "The application could not verify the bucket's "
-                        "public access configuration."
+                        "CloudSentinel could not retrieve the "
+                        "bucket public access configuration."
                     )
                 })
 
-            # Check encryption
+            # -------------------------
+            # Encryption
+            # -------------------------
+
             try:
-                s3.get_bucket_encryption(Bucket=name)
+                s3.get_bucket_encryption(
+                    Bucket=bucket_name
+                )
 
             except ClientError as error:
-                if error.response["Error"]["Code"] == "ServerSideEncryptionConfigurationNotFoundError":
+
+                code = error.response["Error"]["Code"]
+
+                if code == "ServerSideEncryptionConfigurationNotFoundError":
+
                     findings.append({
                         "service": "S3",
-                        "resource": name,
+                        "resource": bucket_name,
                         "severity": "HIGH",
-                        "title": "S3 Bucket Encryption Disabled",
+                        "title": "S3 Encryption Not Configured",
                         "description": (
-                            "The bucket does not appear to have default "
-                            "server-side encryption configured."
+                            "Default server-side encryption is not "
+                            "configured for this bucket."
                         )
                     })
 
     except Exception as error:
+
         findings.append({
             "service": "S3",
             "resource": "AWS Account",
