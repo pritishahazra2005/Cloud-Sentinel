@@ -6,7 +6,7 @@ from backend.scanners.iam_scanner import scan_iam
 from backend.scanners.security_group_scanner import scan_security_groups
 
 from backend.risk.risk_engine import calculate_score
-from backend.ai.advisor import generate_advice
+
 
 # CloudSentinel FastAPI Application
 app = FastAPI(
@@ -92,12 +92,6 @@ def demo_scan():
 
     findings = demo_findings()
 
-    for finding in findings:
-
-        finding["recommendation"] = generate_advice(
-            finding
-        )
-
     security = calculate_score(
         findings
     )
@@ -142,3 +136,4 @@ def aws_scan():
         "security": security,
         "findings": findings
     }
+
