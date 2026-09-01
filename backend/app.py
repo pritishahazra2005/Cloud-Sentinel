@@ -8,22 +8,13 @@ from backend.scanners.security_group_scanner import scan_security_groups
 from backend.risk.risk_engine import calculate_score
 from backend.ai.advisor import generate_advice
 
-
-# ============================================================
 # CloudSentinel FastAPI Application
-# ============================================================
-
 app = FastAPI(
     title="CloudSentinel",
     description="AWS Cloud Security Posture Assessment Platform",
     version="1.0.0"
 )
-
-
-# ============================================================
-# CORS Configuration
-# ============================================================
-
+ # CORS Configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -35,11 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# ============================================================
 # Demo Findings
-# ============================================================
-
 def demo_findings():
 
     return [
@@ -88,9 +75,7 @@ def demo_findings():
     ]
 
 
-# ============================================================
 # Root Endpoint
-# ============================================================
 
 @app.get("/")
 def root():
@@ -100,11 +85,7 @@ def root():
         "status": "running",
         "version": "1.0.0"
     }
-
-
-# ============================================================
 # Demo Scan Endpoint
-# ============================================================
 
 @app.get("/api/demo-scan")
 def demo_scan():
@@ -127,10 +108,7 @@ def demo_scan():
         "findings": findings
     }
 
-
-# ============================================================
 # AWS Scan Endpoint
-# ============================================================
 
 @app.get("/api/aws-scan")
 def aws_scan():
