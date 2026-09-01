@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CloudSentinel | AWS Security</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>CloudSentinel</h1>
+            <p>AWS Cloud Security Posture Assessment</p>
+        </div>
+
+        <div class="status">
+            <span class="dot"></span>
+            System Online
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Controls -->
+
+        <section class="controls">
+
+            <button id="demoBtn">
+                Run Demo Scan
+            </button>
+
+            <button id="awsBtn" class="secondary">
+                Scan AWS Account
+            </button>
+
+        </section>
+
+
+        <!-- Security Score -->
+
+        <section class="overview">
+
+            <div class="score-card">
+
+                <div class="score-circle">
+
+                    <span id="score">
+                        --
+                    </span>
+
+                    <small>/100</small>
+
+                </div>
+
+                <div>
+
+                    <h2>Security Score</h2>
+
+                    <p id="rating">
+                        No scan performed
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat critical">
+
+                <span>Critical</span>
+
+                <strong id="critical">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat high">
+
+                <span>High</span>
+
+                <strong id="high">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat medium">
+
+                <span>Medium</span>
+
+                <strong id="medium">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat low">
+
+                <span>Low</span>
+
+                <strong id="low">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- Scan Information -->
+
+        <section class="scan-info">
+
+            <h2>Scan Information</h2>
+
+            <p>
+                Mode:
+                <strong id="mode">
+                    -
+                </strong>
+            </p>
+
+            <p>
+                Findings:
+                <strong id="total">
+                    0
+                </strong>
+            </p>
+
+        </section>
+
+
+        <!-- Findings -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <h2>Security Findings</h2>
+
+                <span id="loading"></span>
+
+            </div>
+
+
+            <div id="findings" class="findings">
+
+                <div class="empty">
+                    Run a scan to view security findings.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        CloudSentinel • AWS Security Assessment Tool
+
+    </footer>
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
