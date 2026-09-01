@@ -456,14 +456,14 @@ Potential future enhancements include:
 
 # 📸 Dashboard
 
-> CloudSentinel dashboard here after completing the final UI.
+> CloudSentinel dashboard after completing the final UI.
 
-<video src="./demo_look/demo.gif" width="500" height= "500" controls></video>
-
-
-```
+<p align="center">
+  <img src="./demo_look/demo.gif" width="700" alt="CloudSentinel Dashboard Demo">
+</p>
 
 ---
+
 
 # 📌 Disclaimer
 
