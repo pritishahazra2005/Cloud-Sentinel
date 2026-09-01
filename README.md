@@ -45,36 +45,3 @@ CloudSentinel is an AWS Cloud Security Posture Assessment platform designed to i
 
 
 
-Technology Stack
-Python
-FastAPI
-Boto3
-AWS
-HTML5
-CSS3
-JavaScript
-ReportLab
-Pytest
-Security Checks
-Amazon S3
-
-CloudSentinel checks:
-
-S3 public access protection
-Default server-side encryption
-AWS IAM
-
-CloudSentinel checks:
-
-MFA configuration
-Active IAM access keys
-EC2 Security Groups
-
-CloudSentinel checks:
-
-Internet-exposed SSH
-Internet-exposed RDP
-Other unrestricted inbound access
-Risk Scoring
-
-CloudSentinel assigns points based on finding severity.
