@@ -458,15 +458,9 @@ Potential future enhancements include:
 
 > Add a screenshot of your CloudSentinel dashboard here after completing the final UI.
 
-```text
-docs/
-└── dashboard.png
-```
+<video src="./demo_look/demo.mp4" width="500" height= "500" controls></video>
 
-Then replace this section with:
 
-```markdown
-![CloudSentinel Dashboard](docs/dashboard.png)
 ```
 
 ---
